@@ -6,7 +6,12 @@ const loadingTexts = [
   'Skickar Daniels kreditkortsuppgifter',
   'Extrapolerar julstämning',
   'Finjusterar julkortets fomulering',
-  'Ökar AI assistentens självförtroende'
+  'Ökar AI assistentens självförtroende',
+  'Korrekturläser',
+  'Försöker igen',
+  'Knäpper fingrarna för att återfå AI:ns fokus',
+  'Hallå eller!?',
+  'Väntar på svar',
 ]
 
 window.onload = function () {
