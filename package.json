@@ -1,0 +1,14 @@
+{
+  "name": "aixmas",
+  "version": "1.0.0",
+  "description": "aixmas",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Hamngren",
+  "license": "GPL",
+  "dependencies": {
+    "openai": "^3.1.0"
+  }
+}
