@@ -1,18 +1,50 @@
 let loadingCount = 0;
 
-const loadingTexts = [
-  'Ansluter till API',
-  'Anropar AI assistenten',
-  'Skickar Daniels kreditkortsuppgifter',
-  'Extrapolerar julstämning',
-  'Finjusterar julkortets fomulering',
-  'Ökar AI assistentens självförtroende',
-  'Korrekturläser',
-  'Försöker igen',
-  'Knäpper fingrarna för att återfå AI:ns fokus',
-  'Hallå eller!?',
-  'Väntar på svar',
-]
+const loadingTexts = {
+  swe: [
+    'Påbörjar kommunikation med AI',
+    'Anropar AI assistenten',
+    'Skickar Daniels kreditkortsuppgifter',
+    'Extrapolerar julstämning',
+    'Finjusterar julkortets fomulering',
+    'Ökar AI assistentens självförtroende',
+    'Korrekturläser',
+    'Sänker AI assistentens självförtroende',
+    'Knäpper fingrarna för att återfå AI:ns fokus',
+    'Hallå eller!?',
+    'Väntar på svar',
+  ],
+  eng: [
+    'Initializing AI communication',
+    'Calling the AI assistant',
+    'Send Daniel\'s credit card information',
+    'Extrapolate festive spirit',
+    'Adjust greeting card tone',
+    'Increase the AI confidence',
+    'Proof read card',
+    'Decrease the AI confidense',
+    'Hello??',
+    'We might have lost them',
+    'They should have answered by now',
+    'You could try to reload the page',
+  ],
+  spa: [
+    "Inicializando la comunicación de IA",
+    "Llamando al asistente de IA",
+    "Enviar información de la tarjeta de crédito de Daniel",
+    "Extraer el espíritu festivo",
+    "Ajustar el tono de la tarjeta de saludo",
+    "Aumentar la confianza de la IA",
+    "Corregir la tarjeta",
+    "Disminuir la confianza de la IA",
+    "¿Hola?",
+    "Es posible que los hayamos perdido",
+    "Deberían haber respondido ya",
+    "Podrías intentar recargar la página",
+  ]
+}
+
+const supported_languages = ['swe', 'eng', 'spa']
 
 window.onload = function () {
 
@@ -22,12 +54,21 @@ window.onload = function () {
   const img_name = imgs[index];
   document.body.style.backgroundImage = `url(./img/${img_name})`;
 
+
+  const url = new URL(window.location.href);
+
+  // Get the query parameters
+  const params = new URLSearchParams(url.search);
+  let lang = params.has('lang') ? params.get('lang') : 'swe'
+  lang = supported_languages.includes(lang) ? lang : 'swe'
+
+
   const intervalId = setInterval(function () {
-    currentText = loadingTexts[loadingCount % loadingTexts.length]
+    texts = loadingTexts[lang]
+    currentText = texts[loadingCount % texts.length]
     document.getElementById('text').innerHTML = currentText
 
     loadingCount++
-    console.log(loadingCount, currentText);
 
   }, 1500);
   getGreeting(intervalId);
