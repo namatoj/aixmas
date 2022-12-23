@@ -63,6 +63,8 @@ window.onload = function () {
   lang = supported_languages.includes(lang) ? lang : 'swe'
 
 
+  texts = loadingTexts[lang]
+  document.getElementById('text').innerHTML = texts[0]
   const intervalId = setInterval(function () {
     texts = loadingTexts[lang]
     currentText = texts[loadingCount % texts.length]
